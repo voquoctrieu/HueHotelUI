@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'THCartoon9';
+  src: url('./assets/font/THCartoon9.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'VLAMPLESOFT';
+  src: url('./assets/font/VLAMPLESOFT.OTF') format('truetype');
+}
+@font-face {
+  font-family: 'VLAMPLESOFT-MEDIUM';
+  src: url('./assets/font/VLAMPLESOFT-MEDIUM.OTF') format('truetype');
+}
+VLAMPLESOFT-MEDIUM
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+  scrollbar-width: none;          /* ẩn scrollbar */
+  -ms-overflow-style: none;       /* IE 10+ */
+}
+.carousel-item-padding-40-px {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.carousel-item-padding {
+  padding-bottom: 80px;
+}
