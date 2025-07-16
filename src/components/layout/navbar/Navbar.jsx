@@ -275,7 +275,7 @@ function Navbar() {
               HUE
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
               <IconButton
                 size='large'
                 aria-label='account of current user'
@@ -286,6 +286,26 @@ function Navbar() {
               >
                 <MenuIcon />
               </IconButton>
+              <Button
+                component={Link}
+                to='/booking'
+                sx={{
+                  border: '2px solid white',
+                  p: '4px 12px',
+                  ml: 1,
+                  display: 'flex',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  color: 'white',
+                  bgcolor: '#1490ac',
+                  borderRadius: 2,
+                  textTransform: 'uppercase',
+                  minWidth: 0,
+                  height: '36px',
+                }}
+              >
+                Đặt Ngay
+              </Button>
               <Menu
                 id='menu-appbar'
                 anchorEl={anchorElNav}

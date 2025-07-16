@@ -165,7 +165,7 @@ function BookingRoomForm() {
         autoHideDuration={3000}
         onClose={() => setOpenSnackbar(false)}
         message="Bạn đã đặt Phòng thành Công."
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={window.innerWidth < 600 ? { vertical: 'center', horizontal: 'center' } : { vertical: 'top', horizontal: 'center' }}
         sx={{
           '& .MuiSnackbarContent-root': {
             fontSize: { xs: '2rem', sm: '1.2rem' },
