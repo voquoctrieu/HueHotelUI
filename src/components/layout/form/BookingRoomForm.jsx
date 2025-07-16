@@ -27,8 +27,9 @@ function BookingRoomForm() {
 
   const textFieldSx = {
     flex: '0 0 45%',
+    width: { xs: '100%', sm: '45%' },
     border: '1px solid white',
-    p: '10px 15px',
+    p: { xs: '12px 8px', sm: '10px 15px' },
     backgroundColor: '#1490ac',
     borderRadius: '9px',
     '& .MuiSvgIcon-root': { color: 'white' },

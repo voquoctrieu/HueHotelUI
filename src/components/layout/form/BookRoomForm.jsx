@@ -28,7 +28,7 @@ function BookRoomForm() {
     <Box
       component='form'
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 1, width: { xs: '100%', sm: '25ch' } },
       }}
       noValidate
       autoComplete='off'
