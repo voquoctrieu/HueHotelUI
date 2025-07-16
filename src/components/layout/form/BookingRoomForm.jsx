@@ -168,13 +168,16 @@ function BookingRoomForm() {
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         sx={{
           '& .MuiSnackbarContent-root': {
-            fontSize: { xs: '1.5rem', sm: '1.2rem' },
-            minWidth: { xs: 320, sm: 200 },
+            fontSize: { xs: '2rem', sm: '1.2rem' },
+            minWidth: { xs: 340, sm: 200 },
             textAlign: 'center',
             borderRadius: 3,
             boxShadow: 6,
             background: 'linear-gradient(90deg, #1490ac 0%, #14ac8c 100%)',
             animation: 'fadeInScale 0.5s',
+            left: { xs: '50%', sm: 'unset' },
+            transform: { xs: 'translateX(-50%)', sm: 'none' },
+            position: { xs: 'relative', sm: 'static' },
           },
           '@keyframes fadeInScale': {
             '0%': { opacity: 0, transform: 'scale(0.7)' },

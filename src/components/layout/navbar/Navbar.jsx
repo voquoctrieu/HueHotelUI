@@ -363,25 +363,31 @@ function Navbar() {
                   {page.label}
                 </Button>
               ))}
-              <Box>
-                <Button
-                  component={Link}
-                  to='/booking'
-                  sx={{ border: '3px solid white', p: '5px 20px' }}
+              <Button
+                component={Link}
+                to='/booking'
+                sx={{
+                  border: '3px solid white',
+                  p: '5px 20px',
+                  display: 'flex',
+                  width: { xs: '100%', md: 'auto' },
+                  mt: { xs: 2, md: 0 },
+                }}
+              >
+                <Typography
+                  sx={{
+                    textTransform: 'uppercase',
+                    color: 'white',
+                    textDecoration: 'none',
+                    fontSize: { xs: '18px', md: '20px' },
+                    fontWeight: 'bold',
+                    width: '100%',
+                    textAlign: 'center',
+                  }}
                 >
-                  <Typography
-                    sx={{
-                      textTransform: 'uppercase',
-                      color: 'white',
-                      textDecoration: 'none',
-                      fontSize: '20px',
-                      fontWeight: 'bold',
-                    }}
-                  >
-                    Đặt Ngay
-                  </Typography>
-                </Button>
-              </Box>
+                  Đặt Ngay
+                </Typography>
+              </Button>
             </Box>
           </Toolbar>
         </Container>
