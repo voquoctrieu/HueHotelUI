@@ -160,6 +160,28 @@ function BookingRoomForm() {
           Xem bản đồ lớn hơn
         </a>
       </Box>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={3000}
+        onClose={() => setOpenSnackbar(false)}
+        message="Bạn đã đặt Phòng thành Công."
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        sx={{
+          '& .MuiSnackbarContent-root': {
+            fontSize: { xs: '1.5rem', sm: '1.2rem' },
+            minWidth: { xs: 320, sm: 200 },
+            textAlign: 'center',
+            borderRadius: 3,
+            boxShadow: 6,
+            background: 'linear-gradient(90deg, #1490ac 0%, #14ac8c 100%)',
+            animation: 'fadeInScale 0.5s',
+          },
+          '@keyframes fadeInScale': {
+            '0%': { opacity: 0, transform: 'scale(0.7)' },
+            '100%': { opacity: 1, transform: 'scale(1)' },
+          },
+        }}
+      />
     </Box>
   );
 }
