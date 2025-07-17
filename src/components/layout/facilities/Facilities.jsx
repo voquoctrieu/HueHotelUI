@@ -53,7 +53,7 @@ function Facilities() {
         {/* Hàng trên */}
         <Grid container spacing={4} justifyContent="center">
           {facilities.slice(0, 3).map((item, idx) => (
-            <Grid item xs={12} sm={4} md={4} key={idx}>
+            <Grid key={idx}>
               <Box sx={{ textAlign: 'center' }}>
                 {item.image && (
                   <Box
@@ -84,7 +84,7 @@ function Facilities() {
         {/* Hàng dưới */}
         <Grid container spacing={4} justifyContent="center" sx={{ mt: 2 }}>
           {facilities.slice(3, 6).map((item, idx) => (
-            <Grid item xs={12} sm={4} md={4} key={idx+3}>
+            <Grid key={idx+3}>
               <Box sx={{ textAlign: 'center' }}>
                 {item.image && (
                   <Box
@@ -116,7 +116,7 @@ function Facilities() {
         <Box sx={{ width: '100%', mt: 6 }}>
           <Grid container spacing={4} justifyContent="center">
             {facilityIcons.map((item, idx) => (
-              <Grid item xs={4} sm={2} md={2} key={idx}>
+              <Grid key={idx}>
                 <Box sx={{ textAlign: 'center' }}>
                   <Box
                     component="img"

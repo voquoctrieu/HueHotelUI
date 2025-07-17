@@ -17,7 +17,7 @@ function Footer() {
       }}
     >
       <Grid container spacing={20} justifyContent='center'>
-        <Grid item xs={12} md={2} sx={{ textAlign: 'center' }}>
+        <Grid sx={{ textAlign: 'center' }}>
           <Box
             display='flex'
             justifyContent='center'
@@ -40,7 +40,7 @@ function Footer() {
         </Grid>
 
         {/* CONTACT US */}
-        <Grid item xs={12} md={4}>
+        <Grid>
           <Typography variant='h6' fontWeight='bold'>
             Liên Hệ
           </Typography>
@@ -53,7 +53,7 @@ function Footer() {
         </Grid>
 
         {/* HOTEL ADDRESS */}
-        <Grid item xs={12} md={4}>
+        <Grid>
           <Typography variant='h6' fontWeight='bold'>
             Địa Chỉ
           </Typography>
@@ -65,7 +65,7 @@ function Footer() {
         </Grid>
 
         {/* AWARDS + PAYMENT ICONS (placeholder only) */}
-        <Grid item xs={12} md={2} textAlign='center'>
+        <Grid textAlign='center'>
           <Box mb={2}>
             <Box sx={{ display: 'flex', mt: '40px' }}>
               <RealEstateAgentIcon

@@ -1,5 +1,13 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import SpaIcon from '@mui/icons-material/Spa';
+import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
+import FaceIcon from '@mui/icons-material/Face';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import HotTubIcon from '@mui/icons-material/HotTub';
+import ContentCutIcon from '@mui/icons-material/ContentCut';
+import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
+import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
 import MassageImg from '../../../assets/img/Spa-Massage.jpg';
 import XongHoiImg from '../../../assets/img/spa-xonghoi.jpg';
 import ChamSocDaMatImg from '../../../assets/img/spa-chamsocdamat.jpg';
@@ -9,6 +17,7 @@ import TamTrangImg from '../../../assets/img/spa-tamtrang.jpg';
 const spaServices = [
   {
     title: 'Massage thư giãn',
+    icon: <SelfImprovementIcon color="primary" sx={{ fontSize: 32, mr: 1 }} />, 
     image: MassageImg,
     caption: 'Massage thư giãn được nhiều du khách yêu thích (Ảnh nguồn Internet)',
     description1:
@@ -18,6 +27,7 @@ const spaServices = [
   },
   {
     title: 'Xông hơi',
+    icon: <HotTubIcon color="primary" sx={{ fontSize: 32, mr: 1 }} />, 
     image: XongHoiImg,
     caption:
       'Liệu pháp xông hơi vừa hỗ trợ điều trị bệnh, vừa có tác dụng làm đẹp (Ảnh nguồn Internet)',
@@ -27,6 +37,7 @@ const spaServices = [
   },
   {
     title: 'Chăm sóc da mặt',
+    icon: <FaceIcon color="primary" sx={{ fontSize: 32, mr: 1 }} />, 
     image: ChamSocDaMatImg,
     caption: '',
     description1:
@@ -35,6 +46,7 @@ const spaServices = [
   },
   {
     title: 'Triệt lông',
+    icon: <ContentCutIcon color="primary" sx={{ fontSize: 32, mr: 1 }} />,
     image: '',
     caption: '',
     description1:
@@ -43,6 +55,7 @@ const spaServices = [
   },
   {
     title: 'Giảm béo',
+    icon: <SpaIcon color="primary" sx={{ fontSize: 32, mr: 1 }} />,
     image: GiamBeoImg,
     caption:
       'Khách hàng sử dụng dịch vụ giảm béo có thể trải nghiệm liệu trình 1 buổi hay 10 buổi (Ảnh nguồn Internet)',
@@ -52,6 +65,7 @@ const spaServices = [
   },
   {
     title: 'Tắm trắng – tắm dưỡng',
+    icon: <LocalFloristIcon color="primary" sx={{ fontSize: 32, mr: 1 }} />,
     image: TamTrangImg,
     caption: '',
     description1:
@@ -72,27 +86,30 @@ function SpaGroup() {
         boxShadow: 3,
       }}
     >
-      <Typography
-        variant='h4'
-        sx={{
-          fontWeight: 'bold',
-          mb: 4,
-          textAlign: 'center',
-          fontFamily: 'THCartoon9',
-        }}
-      >
-        Spa
-      </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 4 }}>
+        <SpaIcon color="primary" sx={{ fontSize: 40, mr: 1 }} />
+        <Typography
+          variant='h4'
+          sx={{
+            fontWeight: 'bold',
+            textAlign: 'center',
+            fontFamily: 'THCartoon9',
+          }}
+        >
+          SPA
+        </Typography>
+      </Box>
       {spaServices.map((service, idx) => (
         <Box key={idx} sx={{ mb: 6 }}>
-          <Typography variant='h5' sx={{ fontWeight: 'bold', mb: 2 }}>
-            ► {service.title}
-          </Typography>
-
+          <Box display="flex" alignItems="center" mb={1}>
+            {service.icon}
+            <Typography variant='h5' sx={{ fontWeight: 'bold', ml: 1 }}>
+              {service.title}
+            </Typography>
+          </Box>
           <Typography variant='body1' sx={{ mb: 2, textAlign: 'justify' }}>
             {service.description1}
           </Typography>
-
           {service.image && (
             <Box sx={{ textAlign: 'center', my: 3 }}>
               <Box
@@ -112,6 +129,7 @@ function SpaGroup() {
                 <Typography
                   variant='caption'
                   display='block'
+                  component="span"
                   sx={{ fontStyle: 'italic' }}
                 >
                   {service.caption}

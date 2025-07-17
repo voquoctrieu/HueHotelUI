@@ -107,7 +107,7 @@ function Contact() {
         id='Skills'
       >
         <Grid container spacing={3} justifyContent='center'>
-          <Grid item xs={12}>
+          <Grid>
             <Box
               sx={{
                 textAlign: 'center',
