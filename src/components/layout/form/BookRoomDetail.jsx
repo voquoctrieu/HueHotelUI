@@ -16,6 +16,10 @@ function BookRoomDetail() {
   const [adults, setAdults] = React.useState(1);
   const [children, setChildren] = React.useState(0);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [snackbarMessage, setSnackbarMessage] = React.useState('');
+  const [fullName, setFullName] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [errors, setErrors] = React.useState({});
 
   const handleAdultsChange = (event) => {
     setAdults(event.target.value);
@@ -23,6 +27,33 @@ function BookRoomDetail() {
 
   const handleChildrenChange = (event) => {
     setChildren(event.target.value);
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!fullName.trim()) {
+      newErrors.fullName = 'Vui lòng nhập họ và tên';
+    }
+    
+    if (!phone.trim()) {
+      newErrors.phone = 'Vui lòng nhập số điện thoại';
+    } else if (!/^[0-9]{10,11}$/.test(phone.trim())) {
+      newErrors.phone = 'Số điện thoại không hợp lệ';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (validateForm()) {
+      setSnackbarMessage('Bạn đã đặt Phòng thành Công.');
+      setOpenSnackbar(true);
+    } else {
+      setSnackbarMessage('Vui lòng kiểm tra lại thông tin.');
+      setOpenSnackbar(true);
+    }
   };
 
   return (
@@ -116,6 +147,42 @@ function BookRoomDetail() {
             </MenuItem>
           ))}
         </TextField>
+        <TextField
+          id='fullName'
+          label='Họ và Tên'
+          value={fullName}
+          onChange={(e) => {
+            setFullName(e.target.value);
+            if (errors.fullName) setErrors(prev => ({ ...prev, fullName: '' }));
+          }}
+          variant='standard'
+          error={!!errors.fullName}
+          helperText={errors.fullName}
+          sx={{
+            border: '1px solid white',
+            p: '10px 15px',
+            backgroundColor: 'white',
+            borderRadius: '9px',
+          }}
+        />
+        <TextField
+          id='phone'
+          label='Số điện thoại'
+          value={phone}
+          onChange={(e) => {
+            setPhone(e.target.value);
+            if (errors.phone) setErrors(prev => ({ ...prev, phone: '' }));
+          }}
+          variant='standard'
+          error={!!errors.phone}
+          helperText={errors.phone}
+          sx={{
+            border: '1px solid white',
+            p: '10px 15px',
+            backgroundColor: 'white',
+            borderRadius: '9px',
+          }}
+        />
         <Button
           sx={{
             width: '360px',
@@ -124,7 +191,7 @@ function BookRoomDetail() {
             border: '2px solid black',
           }}
           type="button"
-          onClick={() => setOpenSnackbar(true)}
+          onClick={handleSubmit}
         >
           <Typography
             sx={{ color: 'black', fontSize: '20px', fontWeight: 'bold' }}
@@ -136,7 +203,7 @@ function BookRoomDetail() {
           open={openSnackbar}
           autoHideDuration={3000}
           onClose={() => setOpenSnackbar(false)}
-          message="Bạn đã đặt Phòng thành Công."
+          message={snackbarMessage}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         />
       </Box>

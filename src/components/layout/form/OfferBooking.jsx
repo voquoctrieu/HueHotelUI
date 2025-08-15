@@ -38,6 +38,8 @@ function OfferBooking() {
     agree: false,
   });
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [errors, setErrors] = useState({});
 
   const handleRoomChange = (index, value) => {
     const updatedCounts = [...roomCounts];
@@ -51,6 +53,47 @@ function OfferBooking() {
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = 'Vui lòng nhập họ và tên';
+    }
+    
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Vui lòng nhập số điện thoại';
+    } else if (!/^[0-9]{10,11}$/.test(formData.phone.trim())) {
+      newErrors.phone = 'Số điện thoại không hợp lệ';
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'Vui lòng nhập email';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = 'Email không hợp lệ';
+    }
+    
+    if (!formData.agree) {
+      newErrors.agree = 'Vui lòng đồng ý với điều khoản';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (validateForm()) {
+      setSnackbarMessage('Bạn đã đặt Phòng thành Công.');
+      setOpenSnackbar(true);
+    } else {
+      setSnackbarMessage('Vui lòng kiểm tra lại thông tin.');
+      setOpenSnackbar(true);
+    }
   };
 
   const totalPrice = rooms.reduce((sum, room, idx) => {
@@ -132,6 +175,8 @@ function OfferBooking() {
             name='fullName'
             value={formData.fullName}
             onChange={handleChange}
+            error={!!errors.fullName}
+            helperText={errors.fullName}
           />
           <Box sx={{ display: 'flex', gap: 2 }}>
             <TextField
@@ -141,6 +186,8 @@ function OfferBooking() {
               name='phone'
               value={formData.phone}
               onChange={handleChange}
+              error={!!errors.phone}
+              helperText={errors.phone}
             />
           </Box>
 
@@ -151,6 +198,8 @@ function OfferBooking() {
             name='email'
             value={formData.email}
             onChange={handleChange}
+            error={!!errors.email}
+            helperText={errors.email}
           />
 
           <TextField
@@ -182,15 +231,20 @@ function OfferBooking() {
               </Typography>
             }
           />
+          {errors.agree && (
+            <Typography variant="body2" color="error" sx={{ ml: 2 }}>
+              {errors.agree}
+            </Typography>
+          )}
 
-          <Button variant='contained' color='primary' type="button" onClick={() => setOpenSnackbar(true)}>
+          <Button variant='contained' color='primary' type="button" onClick={handleSubmit}>
             Xác nhận đặt phòng
           </Button>
           <Snackbar
             open={openSnackbar}
             autoHideDuration={3000}
             onClose={() => setOpenSnackbar(false)}
-            message="Bạn đã đặt Phòng thành Công."
+            message={snackbarMessage}
             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           />
         </Box>
